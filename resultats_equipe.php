@@ -1,6 +1,7 @@
 <?php
     include 'include/inc.header.php';
     include 'service.php';
+    include 'class_equipe.php'
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -28,29 +29,94 @@
             $api->initialization();
 
             $resultats = $api->getPouleClassement($division,$poule);
+            $rencontres = $api->getPouleRencontres($division,$poule);
+            $listeEquipes = array();
+            $i = 0;
+             foreach ($resultats as $resultat) {
+                $equipe = new Equipe;
+                $equipe->setNom($resultat['equipe']);
+                $equipe->setPoint($resultat['pts']);
+                $equipe->setJoue($resultat['joue']);
+                array_push($listeEquipes, $equipe);
+
+            }
+
+            foreach ($rencontres as $rencontre) {
+                $i=0;
+                //recheche de l'equipea à maj
+                while(strcmp($listeEquipes[$i]->getNom(), $rencontre['equa'])){
+                    $i++;
+                }
+               
+                if($rencontre['scorea']){
+                    if($rencontre['scorea']>$rencontre['scoreb']) {
+                        $listeEquipes[$i]->addVictoire();    
+                    }
+                    else if($rencontre['scorea']<$rencontre['scoreb']) {
+                         $listeEquipes[$i]->addDefaite(); 
+                    }
+                    else if($rencontre['scorea']==$rencontre['scoreb']){
+                         $listeEquipes[$i]->addNul(); 
+                    }    
+                    $listeEquipes[$i]->addPG($rencontre['scorea']);
+                    $listeEquipes[$i]->addPP($rencontre['scoreb']);
+                }
+                
+
+                $i=0;
+                 //recheche de l'equipeb à maj
+                while(strcmp($listeEquipes[$i]->getNom(), $rencontre['equb'])){
+                    $i++;
+                }
+                if($rencontre['scorea']){
+                    if($rencontre['scorea']<$rencontre['scoreb']) {
+                        $listeEquipes[$i]->addVictoire();    
+                    }
+                    else if($rencontre['scorea']>$rencontre['scoreb']) {
+                         $listeEquipes[$i]->addDefaite(); 
+                    }
+                    else {
+                         $listeEquipes[$i]->addNul(); 
+                    }
+                    $listeEquipes[$i]->addPG($rencontre['scoreb']);
+                    $listeEquipes[$i]->addPP($rencontre['scorea']);
+                }
+            }
+
             ?>
-            <table id="domainsTable" class="tablesorter"> 
+           <table id="domainsTable" class="tablesorter"> 
                 <thead> 
                 <tr> 
                     <th>Equipe</th> 
+                    <th>Points</th> 
                     <th>Joué</th> 
-                    <th>Points</th>  
+                    <th>Victoire</th>
+                    <th>Nul</th> 
+                    <th>Défaite</th>
+                    <th>PG</th>
+                    <th>PP</th>    
+                   
                 </tr> 
                 </thead> 
                 <tbody>             
             <?php
-            foreach ($resultats as $resultat) {
+            foreach ($listeEquipes as $equipe) {
                 echo "<tr>
-                        <td>".$resultat['equipe']."</td>
-                        <td>".$resultat['joue']."</td>
-                        <td>".$resultat['pts']."</td>
+                        <td>".$equipe->getNom()."</td>
+                        <td>".$equipe->getPoint()."</td>
+                        <td>".$equipe->getJoue()."</td>
+                        <td>".$equipe->getVictoire()."</td>
+                        <td>".$equipe->getNul()."</td>
+                        <td>".$equipe->getDefaite()."</td>
+                        <td>".$equipe->getPG()."</td>
+                        <td>".$equipe->getPP()."</td>
                       </tr>";  
             }
 
             ?>
             </tbody>
             </table>
-            <?php
+        <?php
 
             $rencontres = $api->getPouleRencontres($division,$poule);
          
@@ -58,26 +124,34 @@
             <table id="domainsTable" class="tablesorter"> 
                 <thead> 
                 <tr> 
-                    <th><?php $rencontres[0]['libelle']; ?></th> 
+                    <th>
+                        <?php 
+                            $rencontre = $rencontres[0];
+                            echo $rencontre['libelle'];
+                        ?>
+                    </th> 
                 </tr> 
                 </thead> 
                 <tbody>  
-
+               
             <?php
+                
                 $precedent_libelle = $rencontres[0]['libelle'];
+                $i = 0;
+
                 foreach ($rencontres as $rencontre) {
                     if($precedent_libelle == $rencontre['libelle']){
-                        echo "<tr>
-                        <td>".$rencontre['equa']."</td>
-                        <td>".$rencontre['equb']."</td>";
-                        if($rencontre['scorea']){
-                            echo "<td>".$rencontre['scorea']."</td>";
-                            echo "<td>".$rencontre['scoreb']."</td>";    
-                        }
-                        else {
-                            echo "<td>-</td>";
-                            echo "<td>-</td>";
-                        }
+                        echo "<tr id='".$i."'>
+                        <td id='".$rencontre['equa']."'>".$rencontre['equa']."</td>
+                            <td>".$rencontre['equb']."</td>";
+                            if($rencontre['scorea']){
+                                echo "<td id='un'>".$rencontre['scorea']."</td>";
+                                echo "<td>".$rencontre['scoreb']."</td>";    
+                            }
+                            else {
+                                echo "<td>-</td>";
+                                echo "<td>-</td>";
+                            }
                       echo "</tr>";    
                     }
                     else {
@@ -111,13 +185,8 @@
              ?>
             </tbody>
             </table>
-            <?php  
-            ?>
-
-
-
             </div>
-                    
+              
         </div>
         <!-- /.row -->
 

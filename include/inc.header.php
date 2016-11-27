@@ -60,7 +60,7 @@
                     <li>
                         <a href="equipes.php">Equipes</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="licencies.php">Licencies</a>
                     </li>
                     <li class="dropdown">
