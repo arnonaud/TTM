@@ -37,7 +37,7 @@
 
             <?php
               
-                $reponse = $bdd->query('SELECT * FROM licencies');
+                $reponse = $bdd->query('SELECT * FROM licencies2');
              ?>   
                 <table id="domainsTable" class="tablesorter"> 
                 <thead> 

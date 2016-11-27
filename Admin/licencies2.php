@@ -7,7 +7,7 @@
     //récupération des licenciés déjà présent dans la base de données
     $numLicences = Array();
     $i=1;
-    $reponse = $bdd->query('SELECT licence FROM licencies');
+    $reponse = $bdd->query('SELECT licence FROM licencies2');
     while ($donnees = $reponse->fetch())
     {
        $numLicences[$i] = $donnees['licence']; 

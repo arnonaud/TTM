@@ -23,7 +23,7 @@
             <div class="col-md-6">
                 <h2>Bienvenue</h2>
                 <?php
-                    $reponse = $bdd->query('SELECT * FROM accueil');
+                    $reponse = $bdd->query('SELECT * FROM accueil2');
                     $donnees = $reponse->fetch();
                     echo "<p>".$donnees['contenu_accueil']."</p>";
 
@@ -37,7 +37,7 @@
                 <h2 class="page-header">News Recentes</h2>
             </div>
             <?php
-                $reponse = $bdd->query('SELECT * FROM news');
+                $reponse = $bdd->query('SELECT * FROM news2');
                 
                 while ($donnees = $reponse->fetch())
                 {
