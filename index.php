@@ -1,5 +1,6 @@
 <?php
     include 'include/inc.header.php';
+    include 'service.php';
     include 'include/inc.connexion.php';
 ?>
 
@@ -15,59 +16,57 @@
         </div>
         <!-- /.row -->
 
-        <!-- Intro Content -->
-        <div class="row">
-            <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-            </div>
-            <div class="col-md-6">
-                <h2>Bienvenue</h2>
-                <?php
-                    $reponse = $bdd->query('SELECT * FROM accueil2');
-                    $donnees = $reponse->fetch();
-                    echo "<p>".$donnees['contenu_accueil']."</p>";
-
-                ?>
-            </div>
-        </div>
-       
-
+        <!-- Content Row -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">News Recentes</h2>
-            </div>
-            <?php
-                $reponse = $bdd->query('SELECT * FROM news2');
-                
-                while ($donnees = $reponse->fetch())
-                {
-                    ?>
-                     <div class="col-md-4 text-center">
-                        <div class="thumbnail">
-                            <div class="caption">
-                               <?php echo "<h3>".$donnees['titre']."</h3>";
-                                     echo "<p>".$donnees['contenu']."</p>";
-                                ?>
-                            </div>
-                        </div>
+                    <!-- Intro Content -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                     </div>
-               <?php 
-                } ?>               
+                    <div class="col-md-6">
+                        <h2>Bienvenue</h2>
+                        <?php
+                            $reponse = $bdd->query('SELECT * FROM accueil2');
+                            $donnees = $reponse->fetch();
+                            echo "<p>".$donnees['contenu_accueil']."</p>";
 
+                        ?>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="page-header">News Recentes</h2>
+                    </div>
+                    <?php
+                        $reponse = $bdd->query('SELECT * FROM news2');
+                        
+                        while ($donnees = $reponse->fetch())
+                        {
+                            ?>
+                             <div class="col-md-12 text-center">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                       <?php echo "<h3>".$donnees['titre']."</h3>";
+                                             echo "<p>".$donnees['contenu']."</p>";
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                       <?php 
+                        } ?>               
+
+                </div>
+             </div>
         </div>
+        <!-- /.row -->
 
-
-
-        
         <hr>
+
+ 
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
 </body>
 

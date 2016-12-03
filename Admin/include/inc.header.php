@@ -53,8 +53,11 @@
             <!-- Sidebar Column -->
             <div class="col-md-3">
                 <div class="list-group">
+                    <a href="accueil.php" class="list-group-item">Accueil</a>
+                    <a href="news.php" class="list-group-item">News</a>
                     <a href="licencies.php" class="list-group-item">Licenciés</a>
-                    
+                    <a href="club.php" class="list-group-item">Le Club</a>
+                    <a href="divers.php" class="list-group-item">Divers</a>
                 </div>
             </div>
            

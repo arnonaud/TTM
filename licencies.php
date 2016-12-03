@@ -39,7 +39,8 @@
               
                 $reponse = $bdd->query('SELECT * FROM licencies2');
              ?>   
-                <table id="domainsTable" class="tablesorter"> 
+             <div class="table-responsive">
+                <table id="domainsTable" class="table tablesorter"> 
                 <thead> 
                 <tr> 
                     <th>Nom</th> 
@@ -76,7 +77,7 @@
             ?>
             </tbody>
             </table>
-
+            </div>
              </div>
         </div>
         <!-- /.row -->

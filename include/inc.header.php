@@ -64,26 +64,54 @@
                         <a href="licencies.php">Licencies</a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Test<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Le Club<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a href="informations.php">Informations</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a href="diaporama.php">Diaporama</a>
                             </li>
                             <li>
-                                <a href="portfolio-3-col.html">3 Column Portfolio</a>
+                                <a href="contact.php">Contact</a>
                             </li>
                             <li>
-                                <a href="portfolio-4-col.html">4 Column Portfolio</a>
+                                <a href="membres.php">Bureau</a>
                             </li>
                             <li>
-                                <a href="portfolio-item.html">Single Portfolio Item</a>
+                                <a href="entrainements.php">Entrainements</a>
+                            </li>
+                            <li>
+                                <a href="organigramme.php">Organigramme</a>
                             </li>
                         </ul>
                     </li>
-                   
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Divers<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="chartre.php">Chartre</a>
+                            </li>
+                            <li>
+                                <a href="calendrier.php">Calendrier</a>
+                            </li>
+                            <li>
+                                <a href="inscription.php">Inscription</a>
+                            </li>
+                            <li>
+                                <a href="tarifs.php">Tarifs</a>
+                            </li>
+                            <li>
+                                <a href="revetement.php">Revêtements Autorisés</a>
+                            </li>
+                            <li>
+                                <a href="arbitrage.php">Arbitrage</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="chat.php">Chat</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
