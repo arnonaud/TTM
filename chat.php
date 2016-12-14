@@ -4,7 +4,7 @@
     include 'service.php';
     include 'include/inc.connexion.php';
 ?>
-
+    
     <!-- Page Content -->
     <div class="container">
 
@@ -78,7 +78,7 @@
     {
         var xhr = getXMLHttpRequest();
         // on récupère la valeur de nos champs input via leurs id et on les encode (encodeURIComponent)
-        var pseudo = encodeURIComponent(document.getElementsByClassName('pseudo').value);
+        var pseudo = encodeURIComponent(document.getElementById('pseudo').value);
         var message = encodeURIComponent(document.getElementById('message').value);
         document.getElementById('message').value = ""; // On efface le message dans la textarea
      
@@ -95,7 +95,7 @@
         // par exemple pseudo=Aure77&message=Coucou
     }
      
-    var timer=setInterval("refreshChat()", 5000); // Rafraichit le minichat toute les 5s
+   // var timer=setInterval("refreshChat()", 5000); // Rafraichit le minichat toute les 5s
      
     </script>
     </head>
@@ -104,14 +104,17 @@
         <!-- Affichage du minichat ici -->
         <div id="minichat"></div>
             <?php
-                if(isset($_SESSION['pseudo'])){
-                    echo '<p class="pseudo"> Pseudo : '.$_SESSION['pseudo'].'<br />
-                         Message : <br/><textarea name="message" rows="5" cols="30" id="message"></textarea><br />';
-                }
-                else {
-                  echo  'Pseudo : <br/><input type="text" name="pseudo" id="pseudo" class="pseudo" /><br />
-                         Message : <br/><textarea name="message" rows="5" cols="30" id="message"></textarea><br />';
-                }
+              if(isset($_SESSION['pseudo'])){
+                  $pseudo=$_SESSION['pseudo'];
+                  echo  'Pseudo : <br/><input type="text" name="pseudo" id="pseudo" class="pseudo" value='.$pseudo.' disabled/><br />
+                  Message : <br/><input type="text" name="message" id="message"/>';
+              }
+              else {
+                echo  'Pseudo : <br/><input type="text" name="pseudo" id="pseudo" class="pseudo" /><br />
+                Message : <br/><input type="text" name="message" id="message" disabled/>';
+              }
+
+             
             ?>
             
         <input type="button" value="Envoyer" onclick="submitChat();"/>
