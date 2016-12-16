@@ -70,6 +70,7 @@
      
         xhr.open("GET", "mini_chat.php", true); // On ouvre une connexion en méthode GET vers minichat.php 
         xhr.send(null); // On envoie
+       //$("#contenu_chat").scrollTop(600);
     }
      
      
@@ -81,7 +82,12 @@
         var pseudo = encodeURIComponent(document.getElementById('pseudo').value);
         var message = encodeURIComponent(document.getElementById('message').value);
         document.getElementById('message').value = ""; // On efface le message dans la textarea
-     
+        if(pseudo != ""){
+             $("#message").prop("disabled",false);
+             $("#pseudo").prop("disabled",true);
+        }
+       
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
                 // Remplissage des données textuelles récupérées
@@ -92,10 +98,11 @@
         xhr.open("POST", "mini_chat.php", true); // On ouvre une connexion en méthode POST vers minichat.php
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // permet l'encodage des POST
         xhr.send("pseudo="+pseudo+"&message="+message); // On définit nos variables et leurs valeurs
-        // par exemple pseudo=Aure77&message=Coucou
+     
+        
     }
      
-   // var timer=setInterval("refreshChat()", 5000); // Rafraichit le minichat toute les 5s
+    var timer=setInterval("refreshChat()", 2000); 
      
     </script>
     </head>

@@ -29,66 +29,76 @@
                 </h1>
             </div>
         </div>
-        <!-- /.row -->
-
-        <!-- Content Row -->
         <div class="row">
-            <div class="col-lg-12">
-
-            <?php
-              
-                $reponse = $bdd->query('SELECT * FROM licencies2');
-             ?>   
-             <div class="table-responsive">
-                <table id="domainsTable" class="table tablesorter"> 
-                <thead> 
-                <tr> 
-                    <th>Nom</th> 
-                    <th>Prenom</th> 
-                    <th>Actuel</th> 
-                    <th>Mensuel</th> 
-                    <th>Progression</th>
-                    <th>Détails</th> 
-                </tr> 
-                </thead> 
-                <tbody> 
-              <?php
-                while ($donnees = $reponse->fetch())
-                {
-                  $progression = ($donnees["pointm"] - $donnees["point"]);
-               		echo "<tr id=".$donnees["licence"].">
-               				<td>".$donnees["nom"]."</td>
-               				<td>".$donnees["prenom"]."</td>
-               				<td>".$donnees["point"]."</td>
-                      <td>".$donnees["pointm"]."</td>";
-                      if($progression == 0){
-                        echo "<td style='color:blue'>".$progression."</td>";
-                      }
-                      else if($progression > 0){
-                        echo "<td style='color:green'>".$progression."</td>";
-                      }
-                      else {
-                        echo "<td style='color:red'>".$progression."</td>";
-                      }
-                      echo "<td><a href='detail_licencie.php?licence=".$donnees["licence"]."'>Détails</a></td>";
-               		echo "</tr>";
-               	}
-              
-            ?>
-            </tbody>
-            </table>
+            <div class="col-md-2 col-sm-2 col-xs-4 entete">
+                <p>Nom</p>
             </div>
-             </div>
+            <div class="col-md-2 col-sm-2 col-xs-4 entete">
+                <p>Prenom</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 entete">
+                <p>Actuel</p>
+            </div>
+            <div class="col-md-2 col-sm-2 hidden-xs entete">
+                <p>Mensuel</p>
+            </div>
+            <div class="col-md-2 col-sm-2 hidden-xs entete">
+                <p>Progression</p>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 entete">
+                <p>Détails</p>
+            </div>
         </div>
-        <!-- /.row -->
+        <?php
 
+        $reponse = $bdd->query('SELECT * FROM licencies2');
+    
+        while ($donnees = $reponse->fetch())
+        {
+            $progression = ($donnees["pointm"] - $donnees["point"]);
+            echo "<div class='row'>";
+            echo "<div class='col-md-2 col-sm-2 col-xs-4 licencie_contenu_gauche'>
+                        <p>".$donnees["nom"]."</p>
+                    </div> ";
+
+            echo "<div class='col-md-2 col-sm-2 col-xs-4 licencie_contenu'>
+                        <p>".$donnees["prenom"]."</p>
+                    </div> ";
+
+            echo "<div class='col-md-2 col-sm-2 col-xs-2 licencie_contenu'>
+                        <p>".$donnees["point"]."</p>
+                    </div> ";
+
+            echo "<div class='col-md-2 col-sm-2 hidden-xs licencie_contenu'>
+                        <p>".$donnees["pointm"]."</p>
+                    </div> ";
+
+            if($progression == 0){
+                    echo "<div class='col-md-2 col-sm-2 hidden-xs licencie_contenu'>
+                        <p>".$progression."</p>
+                    </div> ";
+            }
+            else if($progression > 0){
+                    echo "<div class='col-md-2 col-sm-2 hidden-xs licencie_contenu'>
+                        <p>".$progression."</p>
+                    </div> ";                   
+            }
+            else {
+                    
+                    echo "<div class='col-md-2 col-sm-2 hidden-xs licencie_contenu'>
+                        <p>".$progression."</p>
+                    </div> ";                    
+            }
+                echo "<div class='col-md-2 col-sm-2 col-xs-2 licencie_contenu_droite'>
+                        <a href='detail_licencie.php?licence=".$donnees["licence"]."'>Detail</a>
+                    </div>";
+            echo "</div>";
+
+        }
+              
+        ?>
         <hr>
-
- 
     </div>
-    <!-- /.container -->
-
-
 </body>
 
 </html>

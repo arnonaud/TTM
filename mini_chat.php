@@ -24,16 +24,16 @@ else if (isset($_POST['message']))
 	    }
 	}
 
-$reponse = $bdd->query('SELECT * FROM minichat ORDER BY id LIMIT 0,50');
+$reponse = $bdd->query('SELECT * FROM minichat ORDER BY id DESC LIMIT 0,50');
 ?>
 <div id="contenu_chat">
 	<?php
 	while ($val = $reponse->fetch())
 	{
 		$date = new DateTime($val['date_msg']);
-		$msg = substr($val['message'],0,70);
-		$msg = $msg."<br />".substr($val['message'],70,strlen($val['message']));
-		echo "<p><span id='date_chat'>le ".$date->format('d-m H:i:s')."</span><span id='pseudo_chat'>".$val['pseudo']." : </span><span id='message_chat'>".$msg."</span></p>";
+		//$msg = substr($val['message'],0,70);
+		//$msg = $msg."<br />".substr($val['message'],70,strlen($val['message']));
+		echo "<p><span id='date_chat'>le ".$date->format('d-m H:i:s')."</span><span id='pseudo_chat'>".$val['pseudo']." : </span><span id='message_chat'>".$val['message']."</span></p>";
 		
 	}
 
