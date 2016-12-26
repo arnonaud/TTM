@@ -1,6 +1,6 @@
 <?php
-    include 'include/inc.header.php';
-    include 'service.php';
+    include 'include/inc.header.php';  
+    include 'include/inc.connexion.php';
 ?>
     <!-- Page Content -->
     <div class="container">
@@ -20,40 +20,34 @@
                 
 
             <?php
-                $api = new Service('SW227', 'QLUdK193Ye');
-                $api->setSerial(Service::generateSerial());
-                $api->initialization();
-
-
-
-                $equipes1 = $api->getEquipesByClub('04530070','M');
-                $equipes2 = $api->getEquipesByClub('04530070','F');
-                $equipes3 = $api->getEquipesByClub('04530070');
+                $reponse = $bdd->query('SELECT * FROM equipe2 WHERE type="M"');
                 echo "Equipe masculine";
                 echo "<br />";
-
-                foreach ($equipes1 as &$equipe) {
-                    echo "<a href='resultats_equipe.php?".$equipe["liendivision"] ."'>".$equipe["libequipe"] ." ". $equipe["libdivision"]."</a>";
+                while ($donnees = $reponse->fetch()) {
+                
+                    echo "<a href='resultats_equipe.php?".$donnees["liendivision"] ."'>".$donnees["libequipe"] ." ". $donnees["libdivision"]."</a>";
                     echo "<br />";
                 }
 
+
+                $reponse = $bdd->query('SELECT * FROM equipe2 WHERE type="F"');
                 echo "<br />";
                 echo "<br />";
                 echo "Equipe feminine";
                 echo "<br />";
-                foreach ($equipes2 as &$equipe) {
-                    
-                   echo "<a href='resultats_equipe.php?".$equipe["liendivision"] ."'>".$equipe["libequipe"] ." ". $equipe["libdivision"]."</a>";
+                while ($donnees = $reponse->fetch()) {                    
+                   echo "<a href='resultats_equipe.php?".$donnees["liendivision"] ."'>".$donnees["libequipe"] ." ". $donnees["libdivision"]."</a>";
                     echo "<br />";
                 }
 
+
+                $reponse = $bdd->query('SELECT * FROM equipe2 WHERE type="A"');
                 echo "<br />";
                 echo "<br />";
                 echo "Autres competitions";
                 echo "<br />";
-                foreach ($equipes3 as &$equipe) {
-                    
-                   echo "<a href='resultats_equipe.php?".$equipe["liendivision"] ."'>".$equipe["libequipe"] ." ". $equipe["libdivision"]."</a>";
+                while ($donnees = $reponse->fetch()) {                    
+                   echo "<a href='resultats_equipe.php?".$donnees["liendivision"] ."'>".$donnees["libequipe"] ." ". $donnees["libdivision"]."</a>";
                     echo "<br />";
                 }
             

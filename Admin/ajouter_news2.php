@@ -4,7 +4,7 @@
    
 
    	$titre = $_POST['titre'];
-	$contenu=$_POST['news'];
+	$contenu=$_POST['contenu'];
 	$date=date('Y/m/d');
 	$req = $bdd->prepare('INSERT INTO news2(titre,contenu,DateNews) VALUES (:titre, :contenu, :dateNews)');
 				$req->execute(array(
