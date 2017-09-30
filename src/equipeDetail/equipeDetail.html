@@ -1,0 +1,16 @@
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <th>Equipe</th>
+            <th>Classement</th>
+            <th>Joué</th>
+            <th>Points</th>
+        </thead>
+        <tr ng-repeat="equipe in $ctrl.equipes">
+            <td>{{ equipe.equipe }}</td>
+            <td>{{ equipe.clt }}</td>
+            <td>{{ equipe.joue }}</td>
+            <td>{{ equipe.pts }}</td>
+        </tr>
+    </table>
+</div>

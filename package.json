@@ -23,6 +23,7 @@
   "dependencies": {
     "@uirouter/angularjs": "^1.0.6",
     "angular": "^1.6.1",
-    "angular-route": "^1.6.1"
+    "angular-route": "^1.6.1",
+    "angular-ui-bootstrap": "^2.5.0"
   }
 }
