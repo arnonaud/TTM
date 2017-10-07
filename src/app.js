@@ -4,8 +4,10 @@ import {Header} from './header/header.component';
 import {Home} from './home/home.component';
 import {EquipesList} from './equipesList/equipesList.component';
 import {EquipeDetail} from './equipeDetail/equipeDetail.component';
+import {LicenciesList} from './licenciesList/licenciesList.component';
 
 import EquipeService from './services/equipes.service';
+import LicencieService from './services/licencies.service';
 
 let app = angular.module('app', ['ui.router']);
 
@@ -13,7 +15,9 @@ app.component('header', Header)
    .component('home', Home)
    .component('equipesList', EquipesList)
    .component('equipeDetail', EquipeDetail)
+   .component('licenciesList', LicenciesList)
    .service('EquipeService', EquipeService)
+   .service('LicencieService', LicencieService)
 
 app.config($stateProvider => {
   const homeState = {
@@ -47,10 +51,21 @@ app.config($stateProvider => {
       rencontres: ($stateParams, EquipeService) => EquipeService.getPouleRencontres($stateParams.division, $stateParams.poule)
     }
   }
+
+  const licenciesListState = {
+    name: 'licenciesList',
+    url: '/licencies',
+    component: 'licenciesList',
+    resolve: {
+      /** @ngInject */
+      licencies: LicencieService => LicencieService.getLicencies()
+    }
+  }
   
   $stateProvider.state(homeState);
   $stateProvider.state(equipesListState);
   $stateProvider.state(equipeDetailState);
+  $stateProvider.state(licenciesListState);
 });
 
 app.run(() => {

@@ -1,0 +1,18 @@
+<div class="container">
+<table class="table table-striped">
+    <tr>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Debut de saison</th>
+        <th>Actuel</th>
+        <th>Progression</th>
+    </tr>
+    <tr ng-repeat="licencie in $ctrl.licenciesInfos">
+        <td>{{ licencie.nom }}</td>
+        <td>{{ licencie.prenom }}</td>
+        <td>{{ licencie.valcla }}</td>
+        <td>{{ licencie.apoint }}</td>
+        <td>{{ licencie.progression }}</td>
+    </tr>
+</table>
+</div>
