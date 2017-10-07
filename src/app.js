@@ -3,7 +3,7 @@ import uiRouter from '@uirouter/angularjs';
 import {Header} from './header/header.component';
 import {Home} from './home/home.component';
 import {EquipesList} from './equipesList/equipesList.component';
-import {EquipeDetail} from './equipeDetail/equipe.component';
+import {EquipeDetail} from './equipeDetail/equipeDetail.component';
 
 import EquipeService from './services/equipes.service';
 
@@ -42,7 +42,9 @@ app.config($stateProvider => {
     component: 'equipeDetail',
     resolve: {
       /** @ngInject */
-      equipes: ($stateParams, EquipeService) => EquipeService.getPouleClassement($stateParams.division, $stateParams.poule)
+      equipes: ($stateParams, EquipeService) => EquipeService.getPouleClassement($stateParams.division, $stateParams.poule),
+      /** @ngInject */
+      rencontres: ($stateParams, EquipeService) => EquipeService.getPouleRencontres($stateParams.division, $stateParams.poule)
     }
   }
   

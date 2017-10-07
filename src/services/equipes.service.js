@@ -20,6 +20,11 @@ class EquipeService {
         return this.http.get("http://localhost/TTM/src/back/equipe_detail.php?division="+divisionId+"&poule="+pouleId)
         .then(response => response.data);
     }
+
+    getPouleRencontres(divisionId, pouleId) {
+        return this.http.get("http://localhost/TTM/src/back/equipe_rencontre.php?division="+divisionId+"&poule="+pouleId)
+        .then(response => response.data);
+    }
 }
 
 export default EquipeService;

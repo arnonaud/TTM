@@ -1,16 +1,31 @@
 <div class="container">
-    <table class="table table-striped">
-        <thead>
-            <th>Equipe</th>
-            <th>Classement</th>
-            <th>Joué</th>
-            <th>Points</th>
-        </thead>
-        <tr ng-repeat="equipe in $ctrl.equipes">
-            <td>{{ equipe.equipe }}</td>
-            <td>{{ equipe.clt }}</td>
-            <td>{{ equipe.joue }}</td>
-            <td>{{ equipe.pts }}</td>
-        </tr>
-    </table>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <th>Equipe</th>
+                <th>Classement</th>
+                <th>Joué</th>
+                <th>Points</th>
+            </thead>
+            <tr ng-repeat="equipe in $ctrl.equipes">
+                <td>{{ equipe.equipe }}</td>
+                <td>{{ equipe.clt }}</td>
+                <td>{{ equipe.joue }}</td>
+                <td>{{ equipe.pts }}</td>
+            </tr>
+        </table>
+    </div>
+    <div ng-repeat="rencontres in $ctrl.rencontesByDates">
+        <table class="table">
+            <tr>
+                <th colspan="4">{{ rencontres[0].dateprevue }}</th>
+            </tr>
+            <tr ng-repeat="rencontre in rencontres">
+                <td>{{ rencontre.equa }}</td>
+                <td>{{ rencontre.equb }}</td>
+                <td>{{ rencontre.scorea }}</td>
+                <td>{{ rencontre.scoreb }}</td>
+            </tr>
+        </table>
+    </div>
 </div>

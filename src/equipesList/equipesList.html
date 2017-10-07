@@ -5,10 +5,10 @@
     </div>
     <div class="list-group col-md-4">
         <h3>Equipes Feminine</h3>
-        <a class="list-group-item" ng-repeat="equipe in $ctrl.feminine">{{ equipe.libequipe }}</a>
+        <a ui-sref="equipeDetail({ division: '{{ equipe.iddiv }}', poule: '{{ equipe.idpoule }}' })" class="list-group-item" ng-repeat="equipe in $ctrl.feminine">{{ equipe.libequipe }}</a>
     </div>
     <div class="list-group col-md-4">
         <h3>Autres equipe</h3>
-        <a class="list-group-item" ng-repeat="equipe in $ctrl.autres">{{ equipe.libequipe }}</a>
+        <a ui-sref="equipeDetail({ division: '{{ equipe.iddiv }}', poule: '{{ equipe.idpoule }}' })" class="list-group-item" ng-repeat="equipe in $ctrl.autres">{{ equipe.libequipe }}</a>
     </div>
 </div>
