@@ -7,7 +7,7 @@
    header('Content-Type: application/json');
 
 
-   $licencies = $api->getJoueursByClub('04530070');
+   $licencies = $api->getJoueursByClub('12530070');
 
 
    echo json_encode($licencies);
