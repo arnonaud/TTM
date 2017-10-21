@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="row">
+        <h2>{{ $ctrl.licencie.nom}} {{ $ctrl.licencie.prenom}}</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <tr>
+                    <td>Point actuel</td>
+                    <td>{{ $ctrl.licencie.point}}</td>
+                </tr>
+                <tr>
+                    <td>Point debut de saison</td>
+                    <td>{{ $ctrl.licencie.valinit}}</td>
+                </tr>
+                <tr>
+                    <td>Progression mois</td>
+                    <td>{{ $ctrl.licencie.progmois}}</td>
+                </tr>
+                <tr>
+                    <td>Progression annuel</td>
+                    <td>{{ $ctrl.licencie.progann}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <tr>
+                    <td>Rang départemental</td>
+                    <td>{{ $ctrl.licencie.rangdep}}</td>
+                </tr>
+                <tr>
+                    <td>Rang régional</td>
+                    <td>{{ $ctrl.licencie.rangreg}}</td>
+                </tr>
+                <tr>
+                    <td>Rang national</td>
+                    <td>{{ $ctrl.licencie.clnat}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <h4>Parties</h4>
+    </div>
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>Epreuve</th>
+                <th>Nom</th>
+                <th>Classement</th>
+                <th>Resultat</th>
+            </tr>
+            <tr ng-repeat="partie in $ctrl.parties" ng-class="{'victoire' : partie.victoire === 'V', 'defaite' : partie.victoire === 'D'}">
+                <td>{{ partie.date }} - {{ partie.epreuve }}</td>
+                <td>{{ partie.nom }}</td>
+                <td>{{ partie.classement }}</td>
+                <td>{{ partie.victoire }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

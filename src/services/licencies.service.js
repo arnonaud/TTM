@@ -16,6 +16,11 @@ class LicencieService {
         return this.http.get("http://localhost/TTM/src/back/rest/licencie.php?licence="+numLicence)
                 .then(response => response.data);
     }
+
+    getJoueurparties(numLicence) {
+        return this.http.get("http://localhost/TTM/src/back/rest/joueurs_parties.php?licence="+numLicence)
+        .then(response => response.data);
+    }
    
 }
 

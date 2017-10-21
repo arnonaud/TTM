@@ -5,14 +5,18 @@
             <th ng-click="$ctrl.sortBy('prenom')">Prenom</th>
             <th ng-click="$ctrl.sortBy('debut')">Debut de saison</th>
             <th ng-click="$ctrl.sortBy('point')">Actuel</th>
-            <th ng-click="$ctrl.sortBy('progression')">Progression</th>
+            <th ng-click="$ctrl.sortBy('progression_mois')">Progression (Mensuel)</th>
+            <th ng-click="$ctrl.sortBy('progression_annuel')">Progression (Annuel)</th>
+            <th>Details</th>
         </tr>
         <tr ng-repeat="licencie in $ctrl.licencies | orderBy:$ctrl.propertyName:$ctrl.reverse">
             <td>{{ licencie.nom }}</td>
             <td>{{ licencie.prenom }}</td>
             <td>{{ licencie.debut }}</td>
             <td>{{ licencie.point }}</td>
-            <td>{{ licencie.progression }}</td>
+            <td>{{ licencie.progression_mois }}</td>
+            <td>{{ licencie.progression_annuel }}</td>
+            <td><a ui-sref="licencie({numLicence: licencie.licence})">Details</a></td>
         </tr>
     </table>
 </div>

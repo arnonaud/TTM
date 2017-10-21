@@ -5,6 +5,7 @@ import {Home} from './home/home.component';
 import {EquipesList} from './equipesList/equipesList.component';
 import {EquipeDetail} from './equipeDetail/equipeDetail.component';
 import {LicenciesList} from './licenciesList/licenciesList.component';
+import {LicencieDetail} from './licencieDetail/licencieDetail.component';
 
 import EquipeService from './services/equipes.service';
 import LicencieService from './services/licencies.service';
@@ -16,6 +17,7 @@ app.component('header', Header)
    .component('equipesList', EquipesList)
    .component('equipeDetail', EquipeDetail)
    .component('licenciesList', LicenciesList)
+   .component('licencieDetail', LicencieDetail)
    .service('EquipeService', EquipeService)
    .service('LicencieService', LicencieService)
 
@@ -61,11 +63,24 @@ app.config($stateProvider => {
       licencies: LicencieService => LicencieService.getLicencies()
     }
   }
+
+  const licencieDetailState = {
+    name: 'licencie',
+    url: '/licencie?numLicence',
+    component: 'licencieDetail',
+    resolve: {
+      /** @ngInject */
+      licencie: ($stateParams, LicencieService) => LicencieService.getLicencie($stateParams.numLicence),
+      /** @ngInject */
+      parties: ($stateParams, LicencieService) => LicencieService.getJoueurparties($stateParams.numLicence)
+    }
+  }
   
   $stateProvider.state(homeState);
   $stateProvider.state(equipesListState);
   $stateProvider.state(equipeDetailState);
   $stateProvider.state(licenciesListState);
+  $stateProvider.state(licencieDetailState);
 });
 
 app.run(() => {

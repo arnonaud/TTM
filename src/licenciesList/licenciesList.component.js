@@ -9,11 +9,8 @@ export const LicenciesList = {
             this.LicencieService = LicencieService;
         }
         $onInit() {
-            this.licencies.forEach(licencie => {
-                licencie.progression = licencie.point - licencie.debut;
-            });
             this.propertyName = 'nom';
-            this.reverse = true;
+            this.reverse = false;
 
 
         };
