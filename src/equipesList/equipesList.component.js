@@ -4,5 +4,10 @@ export const EquipesList = {
         feminine: '<',
         autres: '<'
     },
-    template: require('./equipesList.html')
+    template: require('./equipesList.html'),
+    controller: class {
+        $onInit() {
+            console.log(this.masculine);
+        }
+    }
 }
