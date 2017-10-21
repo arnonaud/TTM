@@ -1,22 +1,25 @@
 export const LicenciesList = {
-    bindings:{
+    bindings: {
         licencies: '<'
     },
     template: require('./licenciesList.html'),
     controller: class {
         /** @ngInject */
-        constructor(LicencieService){
+        constructor(LicencieService) {
             this.LicencieService = LicencieService;
         }
-        $onInit(){
-            this.licenciesInfos = [];
+        $onInit() {
             this.licencies.forEach(licencie => {
-                this.LicencieService.getLicencie(licencie.licence)
-                .then(response => {
-                    response.progression = (response.apoint - response.valcla).toFixed(2);
-                    this.licenciesInfos.push(response);
-                });
+                licencie.progression = licencie.point - licencie.debut;
             });
+            this.propertyName = 'nom';
+            this.reverse = true;
+
+
+        };
+        sortBy(propertyName) {
+            this.reverse = (this.propertyName === propertyName) ? !this.reverse : false;
+            this.propertyName = propertyName;
         }
     }
 }

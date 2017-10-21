@@ -1,18 +1,18 @@
 <div class="container">
-<table class="table table-striped">
-    <tr>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Debut de saison</th>
-        <th>Actuel</th>
-        <th>Progression</th>
-    </tr>
-    <tr ng-repeat="licencie in $ctrl.licenciesInfos">
-        <td>{{ licencie.nom }}</td>
-        <td>{{ licencie.prenom }}</td>
-        <td>{{ licencie.valcla }}</td>
-        <td>{{ licencie.apoint }}</td>
-        <td>{{ licencie.progression }}</td>
-    </tr>
-</table>
+    <table class="table table-striped">
+        <tr>
+            <th ng-click="$ctrl.sortBy('nom')">Nom</th>
+            <th ng-click="$ctrl.sortBy('prenom')">Prenom</th>
+            <th ng-click="$ctrl.sortBy('debut')">Debut de saison</th>
+            <th ng-click="$ctrl.sortBy('point')">Actuel</th>
+            <th ng-click="$ctrl.sortBy('progression')">Progression</th>
+        </tr>
+        <tr ng-repeat="licencie in $ctrl.licencies | orderBy:$ctrl.propertyName:$ctrl.reverse">
+            <td>{{ licencie.nom }}</td>
+            <td>{{ licencie.prenom }}</td>
+            <td>{{ licencie.debut }}</td>
+            <td>{{ licencie.point }}</td>
+            <td>{{ licencie.progression }}</td>
+        </tr>
+    </table>
 </div>

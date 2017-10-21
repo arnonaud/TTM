@@ -5,7 +5,7 @@ class LicencieService {
     }
     getLicencies() {
 
-        return this.http.get("http://localhost/TTM/src/back/rest/licencies.php")
+        return this.http.get("http://localhost/TTM/src/back/licencies/licencies.php")
                 .then(response => {
                    console.log(response);
                     return response.data;
